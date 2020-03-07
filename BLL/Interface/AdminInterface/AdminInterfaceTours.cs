@@ -62,5 +62,9 @@ namespace BLL.Interface.AdminInterface
         {
             EntityAdmin.Update(id, newEntity);
         }
+        public void MarkNotRelevant()
+        {
+            (EntityAdmin as TourAdmin).MarkNotRelevant();
+        }
     }
 }

@@ -50,7 +50,7 @@
     <Compile Include="Interface\AdminInterface\AdminInterfaceHotels.cs" />
     <Compile Include="Interface\AdminInterface\AdminInterfacePictures.cs" />
     <Compile Include="Interface\AdminInterface\AdminInterfaceTours.cs" />
-    <Compile Include="Interface\CustomerInterface\CustomerInterface.cs" />
+    <Compile Include="Interface\CustomerInterface\CustomerToursInterface.cs" />
     <Compile Include="Interface\Interfaces\IAdminInterface.cs" />
     <Compile Include="Interface\Interfaces\ICustomerInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

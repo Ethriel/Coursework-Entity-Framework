@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace BLL.Interface.CustomerInterface
 {
-    public class CustomerInterface : ICustomerInterface<Tour>
+    public class CustomerToursInterface : ICustomerInterface<Tour>
     {
         public ITourCustomer<Tour> TourCustomer { get; set; }
-        public CustomerInterface()
+        public CustomerToursInterface()
         {
             TourCustomer = new TourCustomer();
         }

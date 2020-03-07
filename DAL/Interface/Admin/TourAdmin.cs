@@ -76,5 +76,17 @@ namespace DAL.Interface.Admin
             tac.Tours.RemoveRange(entities);
             tac.SaveChanges();
         }
+        public void MarkNotRelevant()
+        {
+            var tours = tac.Tours.ToList();
+            for (int i = 0; i < tours.Count; i++)
+            {
+                if (tours[i].EndDate < DateTime.Now)
+                {
+                    tours[i].IsDeleted = true;
+                }
+            }
+            tac.SaveChanges();
+        }
     }
 }

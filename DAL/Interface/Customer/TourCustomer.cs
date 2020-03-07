@@ -19,35 +19,28 @@ namespace DAL.Interface.Customer
         public void AddTour(int customerId, int tourId)
         {
             var c = tac.Tourists.FirstOrDefault(x => x.Id.Equals(customerId));
+            var t = tac.Tours.FirstOrDefault(x => x.Id.Equals(tourId));
             if (c == null)
             {
                 throw new Exception("Invalid tourist!");
             }
             else
             {
-                var t = c.Tours.FirstOrDefault(x => x.Id.Equals(tourId));
-                if (t != null)
+                if (c.Tours.Contains(t))
                 {
                     throw new Exception($"{c.FirstName + " " + c.FirstName}! You already have this tour in yout list! Check it");
                 }
                 else
                 {
-                    if (tac.Tours.Contains(t))
-                    {
-                        c.Tours.Add(t);
-                        tac.SaveChanges();
-                    }
-                    else
-                    {
-                        throw new Exception("Such tour does not exist in the database!");
-                    }
+                    c.Tours.Add(t);
+                    tac.SaveChanges();
                 }
             }
         }
 
         public ICollection<Tour> GetAllTours()
         {
-            return tac.Tours.ToList() ?? throw new Exception("No tours to show");
+            return tac.Tours.Where(x => x.IsDeleted.Equals(false)).ToList() ?? throw new Exception("No tours to show");
         }
 
         public ICollection<Tour> GetCustomerTour(int customerId)
