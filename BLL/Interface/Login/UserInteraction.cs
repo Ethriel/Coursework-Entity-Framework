@@ -19,5 +19,9 @@ namespace BLL.Interface.Login
         {
             return ValidateUser.ValidateLogin(loginData);
         }
+        public string GetUserRole(LoginData loginData)
+        {
+            return ValidateUser.GetUserRole(loginData);
+        }
     }
 }

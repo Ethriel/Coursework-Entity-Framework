@@ -46,5 +46,22 @@ namespace DAL.Helpers
                 return tourist;
             }
         }
+        public static string GetUserRole(LoginData loginData)
+        {
+            var db = ContextHelper.GetContext();
+            var ld = db.LoginDatas.FirstOrDefault(x =>
+            x.Login.ToLower().Equals(loginData.Login.ToLower()) &&
+            x.Password.ToLower().Equals(loginData.Password.ToLower()));
+            if (ld == null)
+            {
+                throw new Exception("Invalid login data");
+            }
+            else
+            {
+                var user = ld.Users.FirstOrDefault();
+                var role = user.UserRole;
+                return role.Name;
+            }
+        }
     }
 }
