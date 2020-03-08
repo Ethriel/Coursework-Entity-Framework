@@ -45,7 +45,8 @@ namespace DAL.Interface.Admin
 
         public ICollection<Hotel> GetEntities()
         {
-            return tac.Hotels.ToList() ?? throw new Exception("No hotels to show");
+            var hotels = tac.Hotels.ToList();
+            return hotels.Count > 0 ? hotels : throw new Exception("No hotels to show");
         }
 
         public void Remove(Hotel entity)

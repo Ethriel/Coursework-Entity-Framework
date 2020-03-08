@@ -63,7 +63,8 @@ namespace DAL.Interface.Admin
         }
         public ICollection<Attraction> GetEntities()
         {
-            return tac.Attractions.ToList() ?? throw new Exception("No attractions to show");
+            var attractions = tac.Attractions.ToList();
+            return attractions.Count > 0 ? attractions : throw new Exception("No attractions to show");
         }
 
         public void AddRange(ICollection<Attraction> entities)

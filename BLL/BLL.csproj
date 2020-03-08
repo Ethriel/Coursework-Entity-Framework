@@ -53,6 +53,8 @@
     <Compile Include="Interface\CustomerInterface\CustomerToursInterface.cs" />
     <Compile Include="Interface\Interfaces\IAdminInterface.cs" />
     <Compile Include="Interface\Interfaces\ICustomerInterface.cs" />
+    <Compile Include="Interface\Login\IUserInteraction.cs" />
+    <Compile Include="Interface\Login\UserInteraction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

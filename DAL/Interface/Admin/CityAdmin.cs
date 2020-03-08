@@ -46,7 +46,8 @@ namespace DAL.Interface.Admin
 
         public ICollection<City> GetEntities()
         {
-            return tac.Cities.ToList() ?? throw new Exception("No cities to show");
+            var cities = tac.Cities.ToList();
+            return cities.Count > 0 ? cities : throw new Exception("No cities to show");
         }
 
         public void Remove(City entity)

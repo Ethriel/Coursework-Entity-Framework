@@ -62,7 +62,8 @@ namespace DAL.Interface.Admin
         }
         public ICollection<Tour> GetEntities()
         {
-            return tac.Tours.ToList() ?? throw new Exception("No tours to show");
+            var tours = tac.Tours.ToList();
+            return  tours.Count > 0 ? tours : throw new Exception("No tours to show");
         }
 
         public void AddRange(ICollection<Tour> entities)

@@ -46,7 +46,8 @@ namespace DAL.Interface.Admin
 
         public ICollection<Picture> GetEntities()
         {
-            return tac.Pictures.ToList() ?? throw new Exception("No pictures to show");
+            var pictures = tac.Pictures.ToList();
+            return pictures.Count > 0 ? pictures : throw new Exception("No pictures to show");
         }
 
         public void Remove(Picture entity)

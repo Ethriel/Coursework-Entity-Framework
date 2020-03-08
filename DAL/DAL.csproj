@@ -57,6 +57,7 @@
     <Compile Include="Helpers\AttractionGenerator.cs" />
     <Compile Include="Helpers\ContextHelper.cs" />
     <Compile Include="Helpers\FullCopyHelper.cs" />
+    <Compile Include="Helpers\ValidateUser.cs" />
     <Compile Include="Interface\Admin\AttractionAdmin.cs" />
     <Compile Include="Interface\Admin\CityAdmin.cs" />
     <Compile Include="Interface\Admin\CountryAdmin.cs" />

@@ -40,7 +40,8 @@ namespace DAL.Interface.Customer
 
         public ICollection<Tour> GetAllTours()
         {
-            return tac.Tours.Where(x => x.IsDeleted.Equals(false)).ToList() ?? throw new Exception("No tours to show");
+            var tours = tac.Tours.Where(x => x.IsDeleted.Equals(false)).ToList();
+            return tours.Count > 0 ? tours : throw new Exception("No tours to show");
         }
 
         public ICollection<Tour> GetCustomerTour(int customerId)
@@ -63,12 +64,14 @@ namespace DAL.Interface.Customer
 
         public ICollection<Tour> GetToursByDate(DateTime date)
         {
-            return tac.Tours.Where(x => x.StartDate <= date && x.EndDate >= date).ToList() ?? throw new Exception($"No tours for date {date.ToShortDateString()}");
+            var tours = tac.Tours.Where(x => x.StartDate <= date && x.EndDate >= date).ToList();
+            return tours.Count > 0 ? tours : throw new Exception($"No tours for date {date.ToShortDateString()}");
         }
 
         public ICollection<Tour> GetToursByDateRange(DateTime start, DateTime end)
         {
-            return tac.Tours.Where(x => x.StartDate <= start && x.EndDate >= end).ToList() ?? throw new Exception($"No tours from {start.ToShortDateString()} to {end.ToShortDateString()}");
+            var tours = tac.Tours.Where(x => x.StartDate <= start && x.EndDate >= end).ToList();
+            return tours.Count > 0 ? tours : throw new Exception($"No tours from {start.ToShortDateString()} to {end.ToShortDateString()}");
         }
 
         public void RemoveTour(int customerId, int tourId)

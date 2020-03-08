@@ -45,7 +45,8 @@ namespace DAL.Interface.Admin
 
         public ICollection<Country> GetEntities()
         {
-            return tac.Countries.ToList() ?? throw new Exception("No countries to show");
+            var countries = tac.Countries.ToList();
+            return countries.Count > 0 ? countries : throw new Exception("No countries to show");
         }
 
         public void Remove(Country entity)
