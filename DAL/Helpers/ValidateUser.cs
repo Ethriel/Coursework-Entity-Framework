@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Model;
@@ -29,7 +30,7 @@ namespace DAL.Helpers
                 return u;
             }
         }
-        public static Tourist ValidateLogin(LoginData loginData)
+        public static User ValidateLogin(LoginData loginData)
         {
             var db = ContextHelper.GetContext();
             var ld = db.LoginDatas.FirstOrDefault(x =>
@@ -42,8 +43,7 @@ namespace DAL.Helpers
             else
             {
                 var user = ld.Users.FirstOrDefault();
-                var tourist = user.Tourists.FirstOrDefault();
-                return tourist;
+                return user;
             }
         }
         public static string GetUserRole(LoginData loginData)

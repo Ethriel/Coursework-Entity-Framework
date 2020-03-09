@@ -3,23 +3,63 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:WPF_View.Windows"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <StackPanel>
-            <TextBox x:Name="login">
-                
-            </TextBox>
-            <TextBox x:Name="password">
-
-            </TextBox>
-            <Button x:Name="confirm"
-                    Content="Login"
-                    Click="confirm_Click">
-                
-            </Button>
-        </StackPanel>
-    </Grid>
+        Title="MainWindow" Height="350" Width="260"
+        MaxHeight="350" MaxWidth="260">
+    <StackPanel Orientation="Horizontal">
+        <Grid x:Name="MainGrid" Visibility="Visible">
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="MinWidth" Value="75"/>
+                    <Setter Property="MinHeight" Value="20"/>
+                    <Setter Property="TextAlignment" Value="Center"/>
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </Style>
+            </Grid.Resources>
+            <Rectangle>
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="#FF75D883" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Width="250" Height="200" RadiusY="56.333" RadiusX="56.333">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Green" Offset="0"/>
+                        <GradientStop Color="#FFD1E264" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <StackPanel>
+                <TextBlock Text="Welcome!"/>
+                <TextBlock Text="Select an option"/>
+            </StackPanel>
+            <Grid Width="190" Height="100">
+                <StackPanel>
+                    <Button x:Name="BtnLogin"
+                        Content="Login"
+                        Tag="Pages/LoginPage.xaml"
+                        Click="Btn_Click"/>
+                    <Button x:Name="BtnRegister"
+                        Content="Register"
+                        Tag="Pages/RegisterPage.xaml"
+                        Click="Btn_Click"/>
+                    <Button x:Name="BtnExit"
+                        Content="Exit"
+                        Tag="Exit"
+                        Click="Btn_Click"/>
+                </StackPanel>
+            </Grid>
+            
+        </Grid>
+        <Grid x:Name="PagesGrid" Visibility="Collapsed">
+            <Frame x:Name="PagesFrame"/>
+        </Grid>
+    </StackPanel>
+    
 </Window>

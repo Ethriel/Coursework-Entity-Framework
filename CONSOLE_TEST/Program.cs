@@ -19,17 +19,19 @@ namespace CONSOLE_TEST
             ICustomerInterface<Tour> customerInterface = new CustomerToursInterface();
             IAdminInterface<Tour> adminInterface = new AdminInterfaceTours();
             IUserInteraction userInteraction = new UserInteraction();
-            var t = new Tourist()
-            {
-                BirthDate = new DateTime(1989, 10, 12),
-                Email = "albertsnow@gmail.com",
-                FirstName = "Albert",
-                SecondName = "Snow",
-                Phone = "7890321456"
-            };
-            var loginData = new LoginData() { Login = t.Email, Password = "1" };
+            //var t = new Tourist()
+            //{
+            //    BirthDate = new DateTime(1989, 10, 12),
+            //    Email = "albertsnow@gmail.com",
+            //    FirstName = "Albert",
+            //    SecondName = "Snow",
+            //    Phone = "7890321456"
+            //};
+            var loginData = new LoginData() { Login = "albertsnow@gmail.com", Password = "1" };
             //var u = userInteraction.Register(t, loginData);
-            var tt = userInteraction.SignIn(loginData);
+            var u = userInteraction.SignIn(loginData);
+            var tt = u.Tourists.FirstOrDefault();
+            var emp = u.Employees.FirstOrDefault();
         }
     }
 }

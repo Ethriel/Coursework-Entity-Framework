@@ -15,7 +15,7 @@ namespace BLL.Interface.Login
             return ValidateUser.ValidateRegister(tourist, loginData);
         }
 
-        public Tourist SignIn(LoginData loginData)
+        public User SignIn(LoginData loginData)
         {
             return ValidateUser.ValidateLogin(loginData);
         }

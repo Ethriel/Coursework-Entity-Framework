@@ -11,12 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using DAL.Interface.Customer;
-using DAL.Interface.Admin;
-using BLL.Interface.AdminInterface;
-using BLL.Interface.CustomerInterface;
-using DAL.Model;
-using BLL.Interface.Login;
 
 namespace WPF_View.Windows
 {
@@ -25,32 +19,26 @@ namespace WPF_View.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
-        Tourist tourist;
-        Employee employee;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void confirm_Click(object sender, RoutedEventArgs e)
+        private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            UserInteraction ui = new UserInteraction();
-            LoginData ld = new LoginData() { Login = login.Text, Password = password.Text };
-            string role = ui.GetUserRole(ld);
-            switch (role)
+            Button b = sender as Button;
+            string tag = b.Tag.ToString();
+            if (tag.Equals("Exit"))
             {
-                case "Admin":
-                    {
-                        
-                        break;
-                    }
-                case "User":
-                    {
-                        tourist = ui.SignIn(ld);
-                        break;
-                    }
-                default:
-                    break;
+                this.Close();
+            }
+            else
+            {
+                PagesFrame.Source = new Uri(tag, UriKind.Relative);
+                PagesGrid.Visibility = Visibility.Visible;
+                MainGrid.Visibility = Visibility.Collapsed;
+                this.Width = 300;
+                this.Height = 250;
             }
         }
     }
