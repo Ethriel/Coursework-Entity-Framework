@@ -34,7 +34,7 @@ namespace DAL.Interface.Admin
         {
             await FindByNameAsync(entity.AttractionName);
             tac.Attractions.Remove(entity);
-            tac.SaveChanges();
+            await tac.SaveChangesAsync();
         }
         public async void UpdateAsync(int id, Attraction newEntity)
         {
@@ -42,7 +42,7 @@ namespace DAL.Interface.Admin
             if (a != null)
             {
                 a = newEntity;
-                tac.SaveChanges();
+                await tac.SaveChangesAsync();
             }
             else
             {

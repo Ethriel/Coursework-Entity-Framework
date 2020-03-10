@@ -36,14 +36,14 @@ namespace DAL.Interface.Admin
         {
             await FindByNameAsync(entity.CityName);
             tac.Cities.Remove(entity);
-            tac.SaveChanges();
+            await tac.SaveChangesAsync();
         }
 
         public async void UpdateAsync(int id, City newEntity)
         {
             var c = await FindByIdAsync(id);
             c = newEntity;
-            tac.SaveChanges();
+            await tac.SaveChangesAsync();
         }
         public void AddRange(ICollection<City> entities)
         {

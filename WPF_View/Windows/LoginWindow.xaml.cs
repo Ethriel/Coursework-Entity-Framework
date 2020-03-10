@@ -42,14 +42,16 @@ namespace WPF_View.Windows
                     {
                         case "Admin":
                             {
-                                employee = ui.SignIn(ld).Employees.FirstOrDefault();
+                                var u = await ui.SignIn(ld);
+                                employee = u.Employees.FirstOrDefault();
                                 AdminWindow adminWindow = new AdminWindow() { Employee = employee };
                                 adminWindow.Show();
                                 break;
                             }
                         case "User":
                             {
-                                tourist = ui.SignIn(ld).Tourists.FirstOrDefault();
+                                var u = await ui.SignIn(ld);
+                                tourist = u.Tourists.FirstOrDefault();
                                 CustomerWindow customerWindow = new CustomerWindow() { Tourist = tourist };
                                 customerWindow.Show();
                                 break;

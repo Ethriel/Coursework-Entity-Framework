@@ -6,8 +6,28 @@
         xmlns:local="clr-namespace:WPF_View.Windows"
         mc:Ignorable="d"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="AdminWindow" Height="450" Width="800">
+        Title="AdminWindow" Height="500" Width="800">
     <Grid>
-        
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <StackPanel.Resources>
+                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+                        <Setter Property="Width" Value="120"/>
+                        <Setter Property="Height" Value="30"/>
+                        <Setter Property="Margin" Value="5"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="FontFamily" Value="Consolas"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Content="Attractions" Click="Button_Click"/>
+                <Button Content="Cities" Click="Button_Click"/>
+                <Button Content="Countries" Click="Button_Click"/>
+                <Button Content="Hotels" Click="Button_Click"/>
+                <Button Content="Pictures" Click="Button_Click"/>
+                <Button Content="Tours" Click="Button_Click"/>
+            </StackPanel>
+            <Frame x:Name="PagesFrame" Margin="5"/>
+        </StackPanel>
     </Grid>
 </Window>

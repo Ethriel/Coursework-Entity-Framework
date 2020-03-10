@@ -35,14 +35,14 @@ namespace DAL.Interface.Admin
         {
             await FindByIdAsync(entity.Id);
             tac.Pictures.Remove(entity);
-            tac.SaveChanges();
+            await tac.SaveChangesAsync();
         }
 
         public async void UpdateAsync(int id, Picture newEntity)
         {
             var c = await FindByIdAsync(id);
             c = newEntity;
-            tac.SaveChanges();
+            await tac.SaveChangesAsync();
         }
         public void AddRange(ICollection<Picture> entities)
         {

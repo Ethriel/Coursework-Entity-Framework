@@ -25,5 +25,25 @@ namespace WPF_View.Windows
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string text = (sender as Button).Content.ToString();
+            switch (text)
+            {
+                case "Attractions":
+                case "Cities":
+                case "Countries":
+                case "Hotels":
+                case "Pictures":
+                case "Tours":
+                    {
+                        PagesFrame.Source = new Uri($"Pages/{text}Page.xaml", UriKind.Relative);
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
     }
 }

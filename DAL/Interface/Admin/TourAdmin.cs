@@ -34,13 +34,13 @@ namespace DAL.Interface.Admin
         {
             await FindByNameAsync(entity.TourName);
             tac.Tours.Remove(entity);
-            tac.SaveChanges();
+            await tac.SaveChangesAsync();
         }
         public async void UpdateAsync(int id, Tour newEntity)
         {
             var a = await FindByIdAsync(id);
             a = newEntity;
-            tac.SaveChanges();
+            await tac.SaveChangesAsync();
         }
 
 

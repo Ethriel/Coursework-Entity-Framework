@@ -35,14 +35,14 @@ namespace DAL.Interface.Admin
         {
             await FindByNameAsync(entity.CountryName);
             tac.Countries.Remove(entity);
-            tac.SaveChanges();
+            await tac.SaveChangesAsync();
         }
 
         public async void UpdateAsync(int id, Country newEntity)
         {
             var c = await FindByIdAsync(id);
             c = newEntity;
-            tac.SaveChanges();
+            await tac.SaveChangesAsync();
         }
         public void AddRange(ICollection<Country> entities)
         {
