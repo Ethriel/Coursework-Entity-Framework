@@ -28,29 +28,9 @@ namespace BLL.Interface.AdminInterface
             EntityAdmin.AddRange(entities);
         }
 
-        public Picture Find(string name)
+        public async void RemoveAsync(Picture entity)
         {
-            return EntityAdmin.Find(name);
-        }
-
-        public Picture FindById(int id)
-        {
-            return EntityAdmin.FindById(id);
-        }
-
-        public Picture Get(int id)
-        {
-            return EntityAdmin.Get(id);
-        }
-
-        public ICollection<Picture> GetEntities()
-        {
-            return EntityAdmin.GetEntities();
-        }
-
-        public void Remove(Picture entity)
-        {
-            EntityAdmin.Remove(entity);
+            await Task.Run(() => EntityAdmin.RemoveAsync(entity));
         }
 
         public void RemoveRange(ICollection<Picture> entities)
@@ -58,9 +38,29 @@ namespace BLL.Interface.AdminInterface
             EntityAdmin.RemoveRange(entities);
         }
 
-        public void Update(int id, Picture newEntity)
+        public async void UpdateAsync(int id, Picture newEntity)
         {
-            EntityAdmin.Update(id, newEntity);
+            await Task.Run(() => EntityAdmin.UpdateAsync(id, newEntity));
+        }
+
+        public async Task<Picture> FindByNameAsync(string name)
+        {
+            return await EntityAdmin.FindByNameAsync(name);
+        }
+
+        public async Task<Picture> FindByIdAsync(int id)
+        {
+            return await EntityAdmin.FindByIdAsync(id);
+        }
+
+        public async Task<Picture> GetAsync(int id)
+        {
+            return await EntityAdmin.GetAsync(id);
+        }
+
+        public async Task<ICollection<Picture>> GetEntitiesAsync()
+        {
+            return await EntityAdmin.GetEntitiesAsync();
         }
     }
 }

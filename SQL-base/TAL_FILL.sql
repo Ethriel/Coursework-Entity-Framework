@@ -7,8 +7,16 @@ values
 go
 insert into LoginData
 values
-('admin', 'qwerty'),
-('user', '1')
+('jhongreen@gmail.com', 'qwerty'),
+('elizabethbrown@gmail.com', 'qwerty'),
+('gregblack@gmail.com', 'qwerty'),
+('janewillson@gmail.com', 'qwerty'),
+('fillwhite@gmail.com', 'qwerty'),
+('greggreen@gmail.com', '1'),
+('janebrown@gmail.com', '1'),
+('johnblack@gmail.com', '1'),
+('elizabethwillson@gmail.com', '1'),
+('fillwhite@gmail.com', '1')
 go
 insert into [User]
 values

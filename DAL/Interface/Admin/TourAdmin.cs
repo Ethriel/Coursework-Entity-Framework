@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,42 +30,19 @@ namespace DAL.Interface.Admin
                 throw new Exception("Tour already exists in database!");
             }
         }
-        public void Remove(Tour entity)
+        public async void RemoveAsync(Tour entity)
         {
-            Find(entity.TourName);
+            await FindByNameAsync(entity.TourName);
             tac.Tours.Remove(entity);
             tac.SaveChanges();
         }
-        public void Update(int id, Tour newEntity)
+        public async void UpdateAsync(int id, Tour newEntity)
         {
-            var a = FindById(id);
-            if (a != null)
-            {
-                a = newEntity;
-                tac.SaveChanges();
-            }
-            else
-            {
-                throw new Exception("Tour does not exist in database!");
-            }
+            var a = await FindByIdAsync(id);
+            a = newEntity;
+            tac.SaveChanges();
         }
-        public Tour Find(string name)
-        {
-            return tac.Tours.FirstOrDefault(x => x.TourName.ToLower().Equals(name.ToLower())) ?? throw new Exception("Tour not found");
-        }
-        public Tour FindById(int id)
-        {
-            return tac.Tours.FirstOrDefault(x => x.Id.Equals(id)) ?? throw new Exception("Tour was not found");
-        }
-        public Tour Get(int id)
-        {
-            return tac.Tours.Find(id) ?? throw new Exception("No tour to show");
-        }
-        public ICollection<Tour> GetEntities()
-        {
-            var tours = tac.Tours.ToList();
-            return  tours.Count > 0 ? tours : throw new Exception("No tours to show");
-        }
+
 
         public void AddRange(ICollection<Tour> entities)
         {
@@ -88,6 +66,27 @@ namespace DAL.Interface.Admin
                 }
             }
             tac.SaveChanges();
+        }
+
+        public async Task<Tour> FindByNameAsync(string name)
+        {
+            return await tac.Tours.FirstOrDefaultAsync(x => x.TourName.ToLower().Equals(name.ToLower())) ?? throw new Exception("Tour not found");
+        }
+
+        public async Task<Tour> FindByIdAsync(int id)
+        {
+            return await tac.Tours.FindAsync(id) ?? throw new Exception("Tour was not found");
+        }
+
+        public async Task<Tour> GetAsync(int id)
+        {
+            return await tac.Tours.FirstOrDefaultAsync(x => x.Id.Equals(id)) ?? throw new Exception("No tour to show");
+        }
+
+        public async Task<ICollection<Tour>> GetEntitiesAsync()
+        {
+            var tours = await tac.Tours.ToListAsync();
+            return tours.Count > 0 ? tours : throw new Exception("No tours to show");
         }
     }
 }

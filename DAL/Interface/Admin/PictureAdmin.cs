@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,45 +31,18 @@ namespace DAL.Interface.Admin
             }
         }
 
-        public Picture Find(string name)
+        public async void RemoveAsync(Picture entity)
         {
-            return tac.Pictures.FirstOrDefault(x => x.Picture1.ToLower().Equals(name.ToLower())) ?? throw new Exception("Picture was not found");
-        }
-        public Picture FindById(int id)
-        {
-            return tac.Pictures.FirstOrDefault(x=>x.Id.Equals(id)) ?? throw new Exception("Picture was not found");
-        }
-
-        public Picture Get(int id)
-        {
-            return tac.Pictures.FirstOrDefault(x => x.Id.Equals(id)) ?? throw new Exception("No picture to show");
-        }
-
-        public ICollection<Picture> GetEntities()
-        {
-            var pictures = tac.Pictures.ToList();
-            return pictures.Count > 0 ? pictures : throw new Exception("No pictures to show");
-        }
-
-        public void Remove(Picture entity)
-        {
-            FindById(entity.Id);
+            await FindByIdAsync(entity.Id);
             tac.Pictures.Remove(entity);
             tac.SaveChanges();
         }
 
-        public void Update(int id, Picture newEntity)
+        public async void UpdateAsync(int id, Picture newEntity)
         {
-            var c = FindById(id);
-            if (c != null)
-            {
-                c = newEntity;
-                tac.SaveChanges();
-            }
-            else
-            {
-                throw new Exception("Picture does not exist in database!");
-            }
+            var c = await FindByIdAsync(id);
+            c = newEntity;
+            tac.SaveChanges();
         }
         public void AddRange(ICollection<Picture> entities)
         {
@@ -80,6 +54,27 @@ namespace DAL.Interface.Admin
         {
             tac.Pictures.RemoveRange(entities);
             tac.SaveChanges();
+        }
+
+        public async Task<Picture> FindByNameAsync(string name)
+        {
+            return await tac.Pictures.FirstOrDefaultAsync(x => x.Picture1.ToLower().Equals(name.ToLower())) ?? throw new Exception("Picture was not found");
+        }
+
+        public async Task<Picture> FindByIdAsync(int id)
+        {
+            return await tac.Pictures.FindAsync(id) ?? throw new Exception("Picture was not found");
+        }
+
+        public async Task<Picture> GetAsync(int id)
+        {
+            return await tac.Pictures.FirstOrDefaultAsync(x => x.Id.Equals(id)) ?? throw new Exception("No picture to show");
+        }
+
+        public async Task<ICollection<Picture>> GetEntitiesAsync()
+        {
+            var pictures = await tac.Pictures.ToListAsync();
+            return pictures.Count > 0 ? pictures : throw new Exception("No pictures to show");
         }
     }
 }

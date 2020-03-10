@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPF_View.Windows"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="260"
-        MaxHeight="350" MaxWidth="260">
+        MaxHeight="350" MaxWidth="300">
     <StackPanel Orientation="Horizontal">
         <Grid x:Name="MainGrid" Visibility="Visible">
             <Grid.Resources>
@@ -43,22 +43,21 @@
                 <StackPanel>
                     <Button x:Name="BtnLogin"
                         Content="Login"
-                        Tag="Pages/LoginPage.xaml"
-                        Click="Btn_Click"/>
+                        Tag="Login"
+                        Click="Btn_Click"
+                            Margin="1"/>
                     <Button x:Name="BtnRegister"
                         Content="Register"
-                        Tag="Pages/RegisterPage.xaml"
-                        Click="Btn_Click"/>
+                        Tag="Register"
+                        Click="Btn_Click"
+                            Margin="1"/>
                     <Button x:Name="BtnExit"
                         Content="Exit"
                         Tag="Exit"
-                        Click="Btn_Click"/>
+                        Click="Btn_Click"
+                            Margin="1"/>
                 </StackPanel>
             </Grid>
-            
-        </Grid>
-        <Grid x:Name="PagesGrid" Visibility="Collapsed">
-            <Frame x:Name="PagesFrame"/>
         </Grid>
     </StackPanel>
     

@@ -28,29 +28,9 @@ namespace BLL.Interface.AdminInterface
             EntityAdmin.AddRange(entities);
         }
 
-        public Country Find(string name)
+        public async void RemoveAsync(Country entity)
         {
-            return EntityAdmin.Find(name);
-        }
-
-        public Country FindById(int id)
-        {
-            return EntityAdmin.FindById(id);
-        }
-
-        public Country Get(int id)
-        {
-            return EntityAdmin.Get(id);
-        }
-
-        public ICollection<Country> GetEntities()
-        {
-            return EntityAdmin.GetEntities();
-        }
-
-        public void Remove(Country entity)
-        {
-            EntityAdmin.Remove(entity);
+            await Task.Run(() => EntityAdmin.RemoveAsync(entity));
         }
 
         public void RemoveRange(ICollection<Country> entities)
@@ -58,9 +38,29 @@ namespace BLL.Interface.AdminInterface
             EntityAdmin.RemoveRange(entities);
         }
 
-        public void Update(int id, Country newEntity)
+        public async void UpdateAsync(int id, Country newEntity)
         {
-            EntityAdmin.Update(id, newEntity);
+            await Task.Run(() => EntityAdmin.UpdateAsync(id, newEntity));
+        }
+
+        public async Task<Country> FindByNameAsync(string name)
+        {
+            return await EntityAdmin.FindByNameAsync(name);
+        }
+
+        public async Task<Country> FindByIdAsync(int id)
+        {
+            return await EntityAdmin.FindByIdAsync(id);
+        }
+
+        public async Task<Country> GetAsync(int id)
+        {
+            return await EntityAdmin.GetAsync(id);
+        }
+
+        public async Task<ICollection<Country>> GetEntitiesAsync()
+        {
+            return await EntityAdmin.GetEntitiesAsync();
         }
     }
 }

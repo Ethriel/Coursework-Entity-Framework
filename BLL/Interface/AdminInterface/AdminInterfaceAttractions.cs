@@ -28,29 +28,9 @@ namespace BLL.Interface.AdminInterface
             EntityAdmin.AddRange(entities);
         }
 
-        public Attraction Find(string name)
+        public async void RemoveAsync(Attraction entity)
         {
-            return EntityAdmin.Find(name);
-        }
-
-        public Attraction FindById(int id)
-        {
-            return EntityAdmin.FindById(id);
-        }
-
-        public Attraction Get(int id)
-        {
-            return EntityAdmin.Get(id);
-        }
-
-        public ICollection<Attraction> GetEntities()
-        {
-            return EntityAdmin.GetEntities();
-        }
-
-        public void Remove(Attraction entity)
-        {
-            EntityAdmin.Remove(entity);
+           await Task.Run(()=> EntityAdmin.RemoveAsync(entity));
         }
 
         public void RemoveRange(ICollection<Attraction> entities)
@@ -58,9 +38,29 @@ namespace BLL.Interface.AdminInterface
             EntityAdmin.RemoveRange(entities);
         }
 
-        public void Update(int id, Attraction newEntity)
+        public async void UpdateAsync(int id, Attraction newEntity)
         {
-            EntityAdmin.Update(id, newEntity);
+            await Task.Run(() => EntityAdmin.UpdateAsync(id, newEntity));
+        }
+
+        public async Task<Attraction> FindByNameAsync(string name)
+        {
+            return await EntityAdmin.FindByNameAsync(name);
+        }
+
+        public async Task<Attraction> FindByIdAsync(int id)
+        {
+            return await EntityAdmin.FindByIdAsync(id);
+        }
+
+        public async Task<Attraction> GetAsync(int id)
+        {
+            return await EntityAdmin.GetAsync(id);
+        }
+
+        public async Task<ICollection<Attraction>> GetEntitiesAsync()
+        {
+            return await EntityAdmin.GetEntitiesAsync();
         }
     }
 }

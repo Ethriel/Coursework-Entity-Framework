@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,44 +31,20 @@ namespace DAL.Interface.Admin
             }
         }
 
-        public Hotel Find(string name)
-        {
-            return tac.Hotels.FirstOrDefault(x => x.HotelName.ToLower().Equals(name.ToLower())) ?? throw new Exception("Hotel was not found");
-        }
-        public Hotel FindById(int id)
-        {
-            return tac.Hotels.FirstOrDefault(x => x.Id.Equals(id)) ?? throw new Exception("Hotel was not found");
-        }
-        public Hotel Get(int id)
-        {
-            return tac.Hotels.FirstOrDefault(x => x.Id.Equals(id)) ?? throw new Exception("No hotel to show");
-        }
 
-        public ICollection<Hotel> GetEntities()
-        {
-            var hotels = tac.Hotels.ToList();
-            return hotels.Count > 0 ? hotels : throw new Exception("No hotels to show");
-        }
 
-        public void Remove(Hotel entity)
+        public async void RemoveAsync(Hotel entity)
         {
-            FindById(entity.Id);
+            await FindByIdAsync(entity.Id);
             tac.Hotels.Remove(entity);
             tac.SaveChanges();
         }
 
-        public void Update(int id, Hotel newEntity)
+        public async void UpdateAsync(int id, Hotel newEntity)
         {
-            var c = FindById(id);
-            if (c != null)
-            {
-                c = newEntity;
-                tac.SaveChanges();
-            }
-            else
-            {
-                throw new Exception("Hotel does not exist in database!");
-            }
+            var c = await FindByIdAsync(id);
+            c = newEntity;
+            tac.SaveChanges();
         }
         public void AddRange(ICollection<Hotel> entities)
         {
@@ -79,6 +56,27 @@ namespace DAL.Interface.Admin
         {
             tac.Hotels.RemoveRange(entities);
             tac.SaveChanges();
+        }
+
+        public async Task<Hotel> FindByNameAsync(string name)
+        {
+            return await tac.Hotels.FirstOrDefaultAsync(x => x.HotelName.ToLower().Equals(name.ToLower())) ?? throw new Exception("Hotel was not found");
+        }
+
+        public async Task<Hotel> FindByIdAsync(int id)
+        {
+            return await tac.Hotels.FirstOrDefaultAsync(x => x.Id.Equals(id)) ?? throw new Exception("Hotel was not found");
+        }
+
+        public async Task<Hotel> GetAsync(int id)
+        {
+            return await tac.Hotels.FirstOrDefaultAsync(x => x.Id.Equals(id)) ?? throw new Exception("No hotel to show");
+        }
+
+        public async Task<ICollection<Hotel>> GetEntitiesAsync()
+        {
+            var hotels = await tac.Hotels.ToListAsync();
+            return hotels.Count > 0 ? hotels : throw new Exception("No hotels to show");
         }
     }
 }

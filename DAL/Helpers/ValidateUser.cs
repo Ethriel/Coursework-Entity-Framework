@@ -10,12 +10,12 @@ namespace DAL.Helpers
 {
     public static class ValidateUser
     {
-        public static User ValidateRegister(Tourist tourist, LoginData loginData)
+        public static async Task<User> ValidateRegisterAsync(Tourist tourist, LoginData loginData)
         {
             var firstName = tourist.FirstName.ToLower();
             var secondName = tourist.SecondName.ToLower();
             var db = ContextHelper.GetContext();
-            var t = db.Tourists.FirstOrDefault(x => x.FirstName.ToLower().Equals(firstName) && x.SecondName.ToLower().Equals(secondName));
+            var t = await db.Tourists.FirstOrDefaultAsync(x => x.FirstName.ToLower().Equals(firstName) && x.SecondName.ToLower().Equals(secondName));
             if (t != null)
             {
                 throw new Exception("Tourist with such data is already in the database!");
@@ -30,10 +30,10 @@ namespace DAL.Helpers
                 return u;
             }
         }
-        public static User ValidateLogin(LoginData loginData)
+        public static async Task<User> ValidateLoginAsync(LoginData loginData)
         {
             var db = ContextHelper.GetContext();
-            var ld = db.LoginDatas.FirstOrDefault(x =>
+            var ld = await db.LoginDatas.FirstOrDefaultAsync(x =>
             x.Login.ToLower().Equals(loginData.Login.ToLower()) &&
             x.Password.ToLower().Equals(loginData.Password.ToLower()));
             if (ld == null)
@@ -46,10 +46,10 @@ namespace DAL.Helpers
                 return user;
             }
         }
-        public static string GetUserRole(LoginData loginData)
+        public static async Task<string> GetUserRoleAsync(LoginData loginData)
         {
             var db = ContextHelper.GetContext();
-            var ld = db.LoginDatas.FirstOrDefault(x =>
+            var ld = await db.LoginDatas.FirstOrDefaultAsync(x =>
             x.Login.ToLower().Equals(loginData.Login.ToLower()) &&
             x.Password.ToLower().Equals(loginData.Password.ToLower()));
             if (ld == null)

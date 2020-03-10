@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,45 +31,19 @@ namespace DAL.Interface.Admin
                 throw new Exception("City is already at database!");
             }
         }
-
-        public City Find(string name)
+        
+        public async void RemoveAsync(City entity)
         {
-            return tac.Cities.FirstOrDefault(x => x.CityName.ToLower().Equals(name.ToLower())) ?? throw new Exception("City was not found");
-        }
-        public City FindById(int id)
-        {
-            return tac.Cities.FirstOrDefault(x => x.Id.Equals(id)) ?? throw new Exception("City was not found");
-        }
-        public City Get(int id)
-        {
-            return tac.Cities.Find(id) ?? throw new Exception("No city to show");
-        }
-
-        public ICollection<City> GetEntities()
-        {
-            var cities = tac.Cities.ToList();
-            return cities.Count > 0 ? cities : throw new Exception("No cities to show");
-        }
-
-        public void Remove(City entity)
-        {
-            Find(entity.CityName);
+            await FindByNameAsync(entity.CityName);
             tac.Cities.Remove(entity);
             tac.SaveChanges();
         }
 
-        public void Update(int id, City newEntity)
+        public async void UpdateAsync(int id, City newEntity)
         {
-            var c = FindById(id);
-            if (c != null)
-            {
-                c = newEntity;
-                tac.SaveChanges();
-            }
-            else
-            {
-                throw new Exception("City does not exist in database!");
-            }
+            var c = await FindByIdAsync(id);
+            c = newEntity;
+            tac.SaveChanges();
         }
         public void AddRange(ICollection<City> entities)
         {
@@ -80,6 +55,27 @@ namespace DAL.Interface.Admin
         {
             tac.Cities.RemoveRange(entities);
             tac.SaveChanges();
+        }
+
+        public async Task<City> FindByNameAsync(string name)
+        {
+            return await tac.Cities.FirstOrDefaultAsync(x => x.CityName.ToLower().Equals(name.ToLower())) ?? throw new Exception("City was not found");
+        }
+
+        public async Task<City> FindByIdAsync(int id)
+        {
+            return await tac.Cities.FirstOrDefaultAsync(x => x.Id.Equals(id)) ?? throw new Exception("City was not found");
+        }
+
+        public async Task<City> GetAsync(int id)
+        {
+            return await tac.Cities.FindAsync(id) ?? throw new Exception("No city to show");
+        }
+
+        public async Task<ICollection<City>> GetEntitiesAsync()
+        {
+            var cities = await tac.Cities.ToListAsync();
+            return cities.Count > 0 ? cities : throw new Exception("No cities to show");
         }
     }
 }

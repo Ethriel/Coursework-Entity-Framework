@@ -28,29 +28,9 @@ namespace BLL.Interface.AdminInterface
             EntityAdmin.AddRange(entities);
         }
 
-        public City Find(string name)
+        public async void RemoveAsync(City entity)
         {
-            return EntityAdmin.Find(name);
-        }
-
-        public City FindById(int id)
-        {
-            return EntityAdmin.FindById(id);
-        }
-
-        public City Get(int id)
-        {
-            return EntityAdmin.Get(id);
-        }
-
-        public ICollection<City> GetEntities()
-        {
-            return EntityAdmin.GetEntities();
-        }
-
-        public void Remove(City entity)
-        {
-            EntityAdmin.Remove(entity);
+            await Task.Run(() => EntityAdmin.RemoveAsync(entity));
         }
 
         public void RemoveRange(ICollection<City> entities)
@@ -58,9 +38,29 @@ namespace BLL.Interface.AdminInterface
             EntityAdmin.RemoveRange(entities);
         }
 
-        public void Update(int id, City newEntity)
+        public async void UpdateAsync(int id, City newEntity)
         {
-            EntityAdmin.Update(id, newEntity);
+            await Task.Run(() => EntityAdmin.UpdateAsync(id, newEntity));
+        }
+
+        public async Task<City> FindByNameAsync(string name)
+        {
+            return await EntityAdmin.FindByNameAsync(name);
+        }
+
+        public async Task<City> FindByIdAsync(int id)
+        {
+            return await EntityAdmin.FindByIdAsync(id);
+        }
+
+        public async Task<City> GetAsync(int id)
+        {
+            return await EntityAdmin.GetAsync(id);
+        }
+
+        public async Task<ICollection<City>> GetEntitiesAsync()
+        {
+            return await EntityAdmin.GetEntitiesAsync();
         }
     }
 }

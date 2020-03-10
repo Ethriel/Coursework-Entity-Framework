@@ -9,7 +9,7 @@ namespace BLL.Interface.Login
 {
     public interface IUserInteraction
     {
-        User Register(Tourist tourist, LoginData loginData);
-        User SignIn(LoginData loginData);
+        Task<User> Register(Tourist tourist, LoginData loginData);
+        Task<User> SignIn(LoginData loginData);
     }
 }

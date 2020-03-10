@@ -10,18 +10,18 @@ namespace BLL.Interface.Login
 {
     public class UserInteraction : IUserInteraction
     {
-        public User Register(Tourist tourist, LoginData loginData)
+        public async Task<User> Register(Tourist tourist, LoginData loginData)
         {
-            return ValidateUser.ValidateRegister(tourist, loginData);
+            return await ValidateUser.ValidateRegisterAsync(tourist, loginData);
         }
 
-        public User SignIn(LoginData loginData)
+        public async Task<User> SignIn(LoginData loginData)
         {
-            return ValidateUser.ValidateLogin(loginData);
+            return await ValidateUser.ValidateLoginAsync(loginData);
         }
-        public string GetUserRole(LoginData loginData)
+        public async Task<string> GetUserRole(LoginData loginData)
         {
-            return ValidateUser.GetUserRole(loginData);
+            return await ValidateUser.GetUserRoleAsync(loginData);
         }
     }
 }

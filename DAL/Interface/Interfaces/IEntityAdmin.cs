@@ -10,12 +10,12 @@ namespace DAL.Interface.Interfaces
     {
         void Add(T entity);
         void AddRange(ICollection<T> entities);
-        void Remove(T entity);
+        void RemoveAsync(T entity);
         void RemoveRange(ICollection<T> entities);
-        void Update(int id, T newEntity);
-        T Find(string name);
-        T FindById(int id);
-        T Get(int id);
-        ICollection<T> GetEntities();
+        void UpdateAsync(int id, T newEntity);
+        Task<T> FindByNameAsync(string name);
+        Task<T> FindByIdAsync(int id);
+        Task<T> GetAsync(int id);
+        Task<ICollection<T>> GetEntitiesAsync();
     }
 }

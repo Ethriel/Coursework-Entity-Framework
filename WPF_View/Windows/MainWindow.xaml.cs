@@ -28,18 +28,28 @@ namespace WPF_View.Windows
         {
             Button b = sender as Button;
             string tag = b.Tag.ToString();
-            if (tag.Equals("Exit"))
+            switch (tag)
             {
-                this.Close();
+                case "Login":
+                    {
+                        LoginWindow login = new LoginWindow();
+                        login.Show();
+                        break;
+                    }
+                case "Register":
+                    {
+                        RegisterWindow register = new RegisterWindow();
+                        register.Show();
+                        break;
+                    }
+                case "Exit":
+                    {
+                        break;
+                    }
+                default:
+                    return;
             }
-            else
-            {
-                PagesFrame.Source = new Uri(tag, UriKind.Relative);
-                PagesGrid.Visibility = Visibility.Visible;
-                MainGrid.Visibility = Visibility.Collapsed;
-                this.Width = 300;
-                this.Height = 250;
-            }
+            this.Close();
         }
     }
 }

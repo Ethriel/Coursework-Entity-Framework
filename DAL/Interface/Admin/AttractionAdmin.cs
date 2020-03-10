@@ -30,15 +30,15 @@ namespace DAL.Interface.Admin
                 throw new Exception("Attraction already exists in database!");
             }
         }
-        public void Remove(Attraction entity)
+        public async void RemoveAsync(Attraction entity)
         {
-            Find(entity.AttractionName);
+            await FindByNameAsync(entity.AttractionName);
             tac.Attractions.Remove(entity);
             tac.SaveChanges();
         }
-        public void Update(int id, Attraction newEntity)
+        public async void UpdateAsync(int id, Attraction newEntity)
         {
-            var a = FindById(id);
+            var a = await FindByIdAsync(id);
             if (a != null)
             {
                 a = newEntity;
@@ -49,21 +49,21 @@ namespace DAL.Interface.Admin
                 throw new Exception("Attraction does not exist in database!");
             }
         }
-        public Attraction Find(string name)
+        public async Task<Attraction> FindByNameAsync(string name)
         {
-            return tac.Attractions.FirstOrDefault(x => x.AttractionName.ToLower().Equals(name.ToLower())) ?? throw new Exception("Attraction not found");
+            return await tac.Attractions.FirstOrDefaultAsync(x => x.AttractionName.ToLower().Equals(name.ToLower())) ?? throw new Exception("Attraction not found");
         }
-        public Attraction FindById(int id)
+        public async Task<Attraction> FindByIdAsync(int id)
         {
-            return tac.Attractions.FirstOrDefault(x => x.Id.Equals(id)) ?? throw new Exception("Attraction was not found");
+            return await tac.Attractions.FirstOrDefaultAsync(x => x.Id.Equals(id)) ?? throw new Exception("Attraction was not found");
         }
-        public Attraction Get(int id)
+        public async Task<Attraction> GetAsync(int id)
         {
-            return tac.Attractions.Find(id) ?? throw new Exception("No attraction to show");
+            return await tac.Attractions.FindAsync(id) ?? throw new Exception("No attraction to show");
         }
-        public ICollection<Attraction> GetEntities()
+        public async Task<ICollection<Attraction>> GetEntitiesAsync()
         {
-            var attractions = tac.Attractions.ToList();
+            var attractions = await tac.Attractions.ToListAsync();
             return attractions.Count > 0 ? attractions : throw new Exception("No attractions to show");
         }
 
