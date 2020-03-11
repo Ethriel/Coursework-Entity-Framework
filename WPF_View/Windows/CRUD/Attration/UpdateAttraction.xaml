@@ -8,35 +8,15 @@
         mc:Ignorable="d"
         Title="UpdateAttraction" Height="200" Width="300" Loaded="Window_Loaded">
     <Grid>
-        <Grid.Resources>
-            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
-                <Setter Property="Width" Value="120"/>
-                <Setter Property="Height" Value="30"/>
-                <Setter Property="Margin" Value="5"/>
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="FontFamily" Value="Consolas"/>
-            </Style>
-        </Grid.Resources>
         <StackPanel x:Name="SP">
-            <StackPanel.Resources>
-                <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignComboBoxEditableTextBox}">
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                    <Setter Property="FontSize" Value="15"/>
-                    <Setter Property="MinWidth" Value="150"/>
-                    <Setter Property="Margin" Value="5"/>
-                </Style>
-            </StackPanel.Resources>
-            <TextBox Text="{Binding Path=AttractionName, Mode=TwoWay}"/>
-            <TextBox Text="{Binding Path=Price, Mode=TwoWay}"/>
+            <TextBox Text="{Binding Path=AttractionName, Mode=TwoWay}"
+                     md:HintAssist.Hint="Attraction name"/>
+            <TextBox Text="{Binding Path=Price, Mode=TwoWay}"
+                     md:HintAssist.Hint="Price"/>
         </StackPanel>
         <Button x:Name="BtnConfirm" Click="BtnConfirm_Click" Content="Confirm" VerticalAlignment="Bottom"/>
-        <Popup x:Name="popup"
-               PlacementTarget="{Binding ElementName=BtnConfirm}"
-               StaysOpen="False"
-               PopupAnimation="Slide"
-               IsOpen="False"
-               Placement="Top">
+        <Popup x:Name="popup" Style="{StaticResource pop}"
+               PlacementTarget="{Binding ElementName=BtnConfirm}">
             <TextBlock Foreground="Red" Background="White" x:Name="TbPopup"/>
         </Popup>
     </Grid>

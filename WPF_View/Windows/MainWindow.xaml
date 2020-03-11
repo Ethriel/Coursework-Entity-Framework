@@ -42,20 +42,14 @@
             <Grid Width="190" Height="100">
                 <StackPanel>
                     <Button x:Name="BtnLogin"
-                        Content="Login"
-                        Tag="Login"
-                        Click="Btn_Click"
-                            Margin="1"/>
+                            Click="Btn_Click"
+                        Content="Login"/>
                     <Button x:Name="BtnRegister"
-                        Content="Register"
-                        Tag="Register"
-                        Click="Btn_Click"
-                            Margin="1"/>
+                            Click="Btn_Click"
+                        Content="Register"/>
                     <Button x:Name="BtnExit"
-                        Content="Exit"
-                        Tag="Exit"
-                        Click="Btn_Click"
-                            Margin="1"/>
+                            Click="Btn_Click"
+                        Content="Exit"/>
                 </StackPanel>
             </Grid>
         </Grid>

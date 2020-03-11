@@ -27,8 +27,8 @@ namespace WPF_View.Windows
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
-            string tag = b.Tag.ToString();
-            switch (tag)
+            string content = b.Content.ToString();
+            switch (content)
             {
                 case "Login":
                     {

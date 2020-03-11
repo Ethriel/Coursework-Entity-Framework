@@ -41,6 +41,12 @@ namespace WPF_View.Windows.CRUD.Attration
             texts = ListTextBoxesHelper.GetText(SP.Children);
             if (ListTextBoxesHelper.StringsNotEmpty(texts))
             {
+                if (!DecimalNumberChecker.Check(texts[1]))
+                {
+                    popup = ConfigurePopup.Configure(popup, "Only decimal numbers in price are allowed in price field!", BtnConfirm, PlacementMode.Top);
+                    popup.IsOpen = true;
+                    return;
+                }
                 AdminInterface.Add(Attraction);
                 this.Close();
             }

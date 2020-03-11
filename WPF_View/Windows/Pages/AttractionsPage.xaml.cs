@@ -19,6 +19,7 @@ using WPF_View.Windows.CRUD;
 using System.Windows.Controls.Primitives;
 using WPF_View.Windows.CRUD.Attration;
 using WPF_View.Helpers;
+using System.Collections.ObjectModel;
 
 namespace WPF_View.Windows.Pages
 {
@@ -74,7 +75,8 @@ namespace WPF_View.Windows.Pages
             {
                 try
                 {
-                    await Task.Run(() => AdminInterface.RemoveAsync(LvAll.SelectedItem as Attraction));
+                    Attraction a = LvAll.SelectedItem as Attraction;
+                    await Task.Run(() => AdminInterface.RemoveAsync(a));
                 }
                 catch (Exception ex)
                 {
