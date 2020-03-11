@@ -39,6 +39,7 @@ namespace WPF_View.Windows
                 case "Tours":
                     {
                         PagesFrame.Source = new Uri($"Pages/{text}Page.xaml", UriKind.Relative);
+                        PagesFrame.Focus();
                         break;
                     }
                 default:

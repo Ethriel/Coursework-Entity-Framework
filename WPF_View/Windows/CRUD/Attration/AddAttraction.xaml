@@ -1,0 +1,43 @@
+﻿<Window x:Class="WPF_View.Windows.CRUD.Attration.AddAttraction"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_View.Windows.CRUD.Attration"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="AddAttraction" Height="200" Width="300">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatMidBgButton}">
+                <Setter Property="Width" Value="120"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontFamily" Value="Consolas"/>
+            </Style>
+        </Grid.Resources>
+        <StackPanel x:Name="SP">
+            <StackPanel.Resources>
+                <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignComboBoxEditableTextBox}">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="MinWidth" Value="150"/>
+                    <Setter Property="Margin" Value="5"/>
+                </Style>
+            </StackPanel.Resources>
+            <TextBox Text="{Binding Path=AttractionName, Mode=TwoWay}"/>
+            <TextBox Text="{Binding Path=Price, Mode=TwoWay}"/>
+        </StackPanel>
+        <Button x:Name="BtnConfirm" Click="BtnConfirm_Click" Content="Confirm" VerticalAlignment="Bottom"/>
+        <Popup x:Name="popup"
+               PlacementTarget="{Binding ElementName=BtnConfirm}"
+               StaysOpen="False"
+               PopupAnimation="Slide"
+               IsOpen="False"
+               Placement="Top">
+            <TextBlock Foreground="Red" Background="White" x:Name="TbPopup"/>
+        </Popup>
+    </Grid>
+</Window>

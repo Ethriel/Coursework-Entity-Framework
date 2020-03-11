@@ -80,8 +80,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helpers\ConfigurePopup.cs" />
+    <Compile Include="Helpers\ListTextBoxesHelper.cs" />
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CRUD\Attration\AddAttraction.xaml.cs">
+      <DependentUpon>AddAttraction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CRUD\Attration\UpdateAttraction.xaml.cs">
+      <DependentUpon>UpdateAttraction.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\CustomerWindow.xaml.cs">
       <DependentUpon>CustomerWindow.xaml</DependentUpon>
@@ -143,6 +151,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Windows\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CRUD\Attration\AddAttraction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CRUD\Attration\UpdateAttraction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

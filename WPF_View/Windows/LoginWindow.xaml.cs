@@ -26,6 +26,7 @@ namespace WPF_View.Windows
         public LoginWindow()
         {
             InitializeComponent();
+            SetDefaultAdmin();
         }
         private async void confirm_Click(object sender, RoutedEventArgs e)
         {
@@ -72,6 +73,16 @@ namespace WPF_View.Windows
             {
                 popup.IsOpen = true;
             }
+        }
+        private void SetDefaultAdmin()
+        {
+            login.Text = "jhongreen@gmail.com";
+            password.Password = "qwerty";
+        }
+        private void SetDefaultUser()
+        {
+            login.Text = "greggreen@gmail.com";
+            password.Password = "1";
         }
     }
 }
