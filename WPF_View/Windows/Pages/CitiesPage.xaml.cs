@@ -58,6 +58,7 @@ namespace WPF_View.Windows.Pages
             {
                 UpdateCity update = new UpdateCity(LvAll.SelectedItem as City, AdminInterface);
                 update.ShowDialog();
+                RefreshList();
             }
             else
             {
@@ -81,6 +82,7 @@ namespace WPF_View.Windows.Pages
                     popup = ConfigurePopup.Configure(popup, ex.Message, BtnDelete, PlacementMode.Bottom);
                     popup.IsOpen = true;
                 }
+                await Task.Run(() => RefreshList());
             }
             else
             {
@@ -89,10 +91,21 @@ namespace WPF_View.Windows.Pages
             }
         }
 
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        private async void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddCity add = new AddCity(AdminInterface);
             add.ShowDialog();
+            await Task.Run(() => RefreshList());
+        }
+        private async void RefreshList()
+        {
+            //LvAll.Dispatcher.Invoke(() => LvAll.ItemsSource = null);
+            //LvAll.Dispatcher.Invoke(() => LvAll.Items.Clear());
+            //LvAll.Dispatcher.Invoke(() => LvAll.DataContext = null);
+            var cities = await AdminInterface.GetEntitiesAsync();
+            //LvAll.Dispatcher.Invoke(() => LvAll.DataContext = cities);
+            //LvAll.Dispatcher.Invoke(() => LvAll.ItemsSource = cities);
+            LvAll = ListViewHelper.RefreshList(LvAll, cities);
         }
     }
 }

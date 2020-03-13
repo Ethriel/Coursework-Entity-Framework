@@ -16,22 +16,18 @@
                 <Button x:Name="BtnDelete" Content="Delete" Click="BtnDelete_Click"/>
                 <Button x:Name="BtnAdd" Content="Add" Click="BtnAdd_Click"/>
             </StackPanel>
-            <ListView x:Name="LvAll" ItemsSource="{Binding}" Background="Bisque"
-                      ScrollViewer.VerticalScrollBarVisibility="Visible"
-                      ScrollViewer.CanContentScroll="False">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Border>
-                                <TextBlock Text="{Binding Path=CityName}"/>
-                            </Border>
-                            <Border>
-                                <TextBlock Text="{Binding Path=Country.CountryName}"/>
-                            </Border>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <Grid>
+                <ListView x:Name="LvAll" ItemsSource="{Binding}" Background="Bisque">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="City" DisplayMemberBinding="{Binding Path=CityName}"/>
+                                <GridViewColumn Header="Country" DisplayMemberBinding="{Binding Path=Country.CountryName}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
         </StackPanel>
         <Popup x:Name="popup"
                StaysOpen="False"

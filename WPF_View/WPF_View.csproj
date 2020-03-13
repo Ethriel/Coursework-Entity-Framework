@@ -84,6 +84,7 @@
     <Compile Include="Helpers\ConfigurePopup.cs" />
     <Compile Include="Helpers\DecimalNumberChecker.cs" />
     <Compile Include="Helpers\ListTextBoxesHelper.cs" />
+    <Compile Include="Helpers\ListViewHelper.cs" />
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>

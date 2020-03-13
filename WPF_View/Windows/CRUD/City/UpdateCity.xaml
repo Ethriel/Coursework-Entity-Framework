@@ -4,9 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_View.Windows.CRUD.Cities"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="UpdateCity" Height="450" Width="800">
+        Title="UpdateCity" Height="200" Width="300"
+        Loaded="Window_Loaded">
     <Grid>
-        
+        <StackPanel x:Name="SP">
+            <TextBox Text="{Binding Path=CityName, Mode=TwoWay}"
+                     md:HintAssist.Hint="City name" x:Name="Tb"/>
+            <TextBlock Text="{Binding Path=Country.CountryName}"/>
+            <ComboBox x:Name="CB" ItemsSource="{Binding}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=CountryName}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <Button x:Name="BtnConfirm" Click="BtnConfirm_Click" Content="Confirm" VerticalAlignment="Bottom"/>
+        <Popup x:Name="popup" Style="{StaticResource pop}"
+               PlacementTarget="{Binding ElementName=BtnConfirm}">
+            <TextBlock Foreground="Red" Background="White" x:Name="TbPopup"/>
+        </Popup>
     </Grid>
 </Window>
