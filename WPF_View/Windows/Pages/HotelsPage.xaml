@@ -8,7 +8,36 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HotelsPage">
 
-    <Grid>
-        
+    <Grid Background="LightCyan">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                <Button x:Name="BtnListAll" Content="List all" Click="BtnListAll_Click"/>
+                <Button x:Name="BtnUpdate" Content="Update" Click="BtnUpdate_Click"/>
+                <Button x:Name="BtnDelete" Content="Delete" Click="BtnDelete_Click"/>
+                <Button x:Name="BtnAdd" Content="Add" Click="BtnAdd_Click"/>
+            </StackPanel>
+            <Grid>
+                <ListView x:Name="LvAll" ItemsSource="{Binding}" MaxHeight="450">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border>
+                                    <TextBlock Text="{Binding Path=HotelName}"/>
+                                </Border>
+                                <Border>
+                                    <TextBlock Text="{Binding Path=City.CityName}"/>
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackPanel>
+        <Popup x:Name="popup"
+               StaysOpen="False"
+               PopupAnimation="Slide"
+               IsOpen="False">
+            <TextBlock Foreground="Red" Background="White" x:Name="TbPopup"/>
+        </Popup>
     </Grid>
 </Page>

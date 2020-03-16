@@ -76,5 +76,9 @@ namespace DAL.Interface.Admin
             var pictures = await tac.Pictures.ToListAsync();
             return pictures.Count > 0 ? pictures : throw new Exception("No pictures to show");
         }
+        public async Task<Picture> GetByReferenceAsync(string reference)
+        {
+            return await tac.Pictures.FirstOrDefaultAsync(x => x.Picture1.ToLower().Equals(reference.ToLower())) ?? throw new Exception("Picture was not found");
+        }
     }
 }

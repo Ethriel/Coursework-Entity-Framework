@@ -62,5 +62,9 @@ namespace BLL.Interface.AdminInterface
         {
             return await EntityAdmin.GetEntitiesAsync();
         }
+        public async Task<Picture> GetByReferenceAsync(string reference)
+        {
+            return await (EntityAdmin as PictureAdmin).GetByReferenceAsync(reference);
+        }
     }
 }

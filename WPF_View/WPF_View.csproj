@@ -100,6 +100,9 @@
     <Compile Include="Windows\CRUD\City\UpdateCity.xaml.cs">
       <DependentUpon>UpdateCity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\CRUD\Hotels\AddHotel.xaml.cs">
+      <DependentUpon>AddHotel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\CustomerWindow.xaml.cs">
       <DependentUpon>CustomerWindow.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\CRUD\City\UpdateCity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CRUD\Hotels\AddHotel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

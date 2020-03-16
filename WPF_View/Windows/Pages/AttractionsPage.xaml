@@ -17,7 +17,7 @@
                 <Button x:Name="BtnDelete" Content="Delete" Click="BtnDelete_Click"/>
                 <Button x:Name="BtnAdd" Content="Add" Click="BtnAdd_Click"/>
             </StackPanel>
-            <ListView x:Name="LvAll" ItemsSource="{Binding}" Background="Bisque">
+            <ListView x:Name="LvAll" ItemsSource="{Binding}" Background="Bisque"  MaxHeight="450">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

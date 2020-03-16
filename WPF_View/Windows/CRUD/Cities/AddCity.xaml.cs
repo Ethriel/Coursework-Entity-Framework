@@ -75,6 +75,7 @@ namespace WPF_View.Windows.CRUD.Cities
                     catch (Exception ex)
                     {
                         popup = ConfigurePopup.Configure(popup, ex.Message, BtnConfirm, PlacementMode.Top);
+                        popup.IsOpen = true;
                     }
                 }
             }
