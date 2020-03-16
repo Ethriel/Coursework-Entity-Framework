@@ -88,20 +88,23 @@
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\CRUD\Attration\AddAttraction.xaml.cs">
+    <Compile Include="Windows\CRUD\Attrations\AddAttraction.xaml.cs">
       <DependentUpon>AddAttraction.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\CRUD\Attration\UpdateAttraction.xaml.cs">
+    <Compile Include="Windows\CRUD\Attrations\UpdateAttraction.xaml.cs">
       <DependentUpon>UpdateAttraction.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\CRUD\City\AddCity.xaml.cs">
+    <Compile Include="Windows\CRUD\Cities\AddCity.xaml.cs">
       <DependentUpon>AddCity.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\CRUD\City\UpdateCity.xaml.cs">
+    <Compile Include="Windows\CRUD\Cities\UpdateCity.xaml.cs">
       <DependentUpon>UpdateCity.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\CRUD\Hotels\AddHotel.xaml.cs">
       <DependentUpon>AddHotel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CRUD\Hotels\UpdateHotel.xaml.cs">
+      <DependentUpon>UpdateHotel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\CustomerWindow.xaml.cs">
       <DependentUpon>CustomerWindow.xaml</DependentUpon>
@@ -166,23 +169,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\CRUD\Attration\AddAttraction.xaml">
+    <Page Include="Windows\CRUD\Attrations\AddAttraction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\CRUD\Attration\UpdateAttraction.xaml">
+    <Page Include="Windows\CRUD\Attrations\UpdateAttraction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\CRUD\City\AddCity.xaml">
+    <Page Include="Windows\CRUD\Cities\AddCity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\CRUD\City\UpdateCity.xaml">
+    <Page Include="Windows\CRUD\Cities\UpdateCity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\CRUD\Hotels\AddHotel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CRUD\Hotels\UpdateHotel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
