@@ -1,0 +1,39 @@
+﻿<Window x:Class="WPF_View.Windows.CRUD.Pictures.AddPicture"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_View.Windows.CRUD.Pictures"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Add Picture" Height="350" Width="400">
+    <Grid>
+        <StackPanel x:Name="SP">
+            <TextBox md:HintAssist.Hint="Picture reference" x:Name="Tb"/>
+            <TextBlock Text="Or..."
+                       HorizontalAlignment="Left"/>
+            <Button HorizontalAlignment="Left" 
+                    x:Name="BtnSelectPicture" 
+                    Content="Select picture"
+                    Click="BtnSelectPicture_Click">
+                <Button.ToolTip>
+                    <ToolTip Template="{StaticResource TT_CRUD_PICS}"/>
+                </Button.ToolTip>
+            </Button>
+            <Image x:Name="PicImg"
+                       Width="160"
+                       Height="160"/>
+        </StackPanel>
+        <Button x:Name="BtnConfirm" VerticalAlignment="Bottom" 
+                Content="Confirm" 
+                Click="BtnConfirm_Click">
+            <Button.ToolTip>
+                <ToolTip Template="{StaticResource TT_CONFIRM}"/>
+            </Button.ToolTip>
+        </Button>
+        <Popup x:Name="popup"  Style="{StaticResource pop}"
+               PlacementTarget="{Binding ElementName=BtnConfirm}">
+            <TextBlock Foreground="Red" Background="White" x:Name="TbPopup"/>
+        </Popup>
+    </Grid>
+</Window>

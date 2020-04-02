@@ -1,10 +1,8 @@
+using System.Data.Entity;
+using DAL.Configuration;
+
 namespace DAL.Model
 {
-    using System;
-    using System.Data.Entity;
-    using System.Linq;
-    using DAL.Configuration;
-
     public class TravelAgencyContext : DbContext
     {
         public TravelAgencyContext()

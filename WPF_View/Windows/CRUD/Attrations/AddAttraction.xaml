@@ -14,7 +14,14 @@
             <TextBox Text="{Binding Path=Price, Mode=TwoWay}"
                      md:HintAssist.Hint="Price"/>
         </StackPanel>
-        <Button x:Name="BtnConfirm" Click="BtnConfirm_Click" Content="Confirm" VerticalAlignment="Bottom"/>
+        <Button x:Name="BtnConfirm" 
+                Click="BtnConfirm_Click" 
+                Content="Confirm" 
+                VerticalAlignment="Bottom">
+            <Button.ToolTip>
+                <ToolTip Template="{StaticResource TT_CONFIRM}"/>
+            </Button.ToolTip>
+        </Button>
         <Popup x:Name="popup"  Style="{StaticResource pop}"
                PlacementTarget="{Binding ElementName=BtnConfirm}">
             <TextBlock Foreground="Red" Background="White" x:Name="TbPopup"/>
