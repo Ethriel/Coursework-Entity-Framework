@@ -45,6 +45,8 @@
                 <Setter Property="FontFamily" Value="Consolas"/>
                 <Setter Property="Padding" Value="0"/>
                 <Setter Property="Background" Value="DarkGoldenrod"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
             </Style>
             <Style TargetType="TextBlock">
                 <Setter Property="FontSize" Value="12"/>

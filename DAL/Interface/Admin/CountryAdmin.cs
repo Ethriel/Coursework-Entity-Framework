@@ -32,9 +32,14 @@ namespace DAL.Interface.Admin
 
         public async void RemoveAsync(Country entity)
         {
-            await FindByNameAsync(entity.CountryName);
-            tac.Countries.Remove(entity);
-            await tac.SaveChangesAsync();
+            
+            var c = await FindByNameAsync(entity.CountryName);
+            if (c == null)
+            {
+                tac.Countries.Remove(entity);
+                var res = await tac.SaveChangesAsync();
+
+            }
         }
 
         public async void UpdateAsync(int id, Country newEntity)

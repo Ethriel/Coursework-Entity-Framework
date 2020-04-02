@@ -29,6 +29,8 @@ namespace WPF_View.Windows
                 case "Tours":
                     {
                         PagesFrame.Source = new Uri($"Pages/{text}Page.xaml", UriKind.Relative);
+                        TbPage.Text = $"{text} page";
+                        TbPage.Visibility = Visibility.Visible;
                         PagesFrame.Focus();
                         break;
                     }
